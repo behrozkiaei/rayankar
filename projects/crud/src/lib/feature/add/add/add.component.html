@@ -1,1 +1,142 @@
-<p>add works!</p>
+<form
+  [formGroup]="customerForm"
+  class="container col-md-4 col-sm-12 mt-3"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="form-group mb-2">
+    <label class="mb-1">First Name:</label>
+    <input type="text" formControlName="Firstname" class="form-control" />
+    <div
+      *ngIf="
+        customerForm.controls.Firstname.invalid &&
+        (customerForm.controls.Firstname.dirty ||
+          customerForm.controls.Firstname.touched)
+      "
+      class="alert alert-danger mt-1"
+    >
+      <div *ngIf="customerForm.controls.Firstname.errors?.['required']">
+        First name is required.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group mb-2">
+    <label class="mb-1">Last Name:</label>
+    <input type="text" formControlName="Lastname" class="form-control" />
+    <div
+      *ngIf="
+        customerForm.controls.Lastname.invalid &&
+        (customerForm.controls.Lastname.dirty ||
+          customerForm.controls.Lastname.touched)
+      "
+      class="alert alert-danger mt-1"
+    >
+      <div *ngIf="customerForm.controls.Lastname.errors?.['required']">
+        Last Name is required.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group mb-2">
+    <label class="mb-1">Date of Birth:</label>
+    <input type="date" formControlName="DateOfBirth" class="form-control" />
+    <div
+      *ngIf="
+        customerForm.controls.DateOfBirth.invalid &&
+        (customerForm.controls.DateOfBirth.dirty ||
+          customerForm.controls.DateOfBirth.touched)
+      "
+      class="alert alert-danger mt-1"
+    >
+      <div *ngIf="customerForm.controls.DateOfBirth.errors?.['required']">
+        Date of Birth is required.
+      </div>
+      <div *ngIf="customerForm.controls.DateOfBirth.errors?.['checkUserExist']">
+        User Exist.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group mb-2">
+    <label class="mb-1">Phone Number:</label>
+    <input
+      type="tel"
+      formControlName="PhoneNumber"
+      class="form-control"
+      placeholder="09116264332"
+    />
+    <div
+      *ngIf="
+        customerForm.controls.PhoneNumber.invalid &&
+        (customerForm.controls.PhoneNumber.dirty ||
+          customerForm.controls.PhoneNumber.touched)
+      "
+      class="alert alert-danger mt-1"
+    >
+      <div *ngIf="customerForm.controls.PhoneNumber.errors?.['required']">
+        Phone Number is required.
+      </div>
+      <div
+        *ngIf="customerForm.controls.PhoneNumber.errors?.['invalidPhoneNumber']"
+      >
+        Invalid phone number.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group mb-2">
+    <label class="mb-1">Email:</label>
+    <input type="email" formControlName="Email" class="form-control" />
+    <div
+      *ngIf="
+        customerForm.controls.Email.invalid &&
+        (customerForm.controls.Email.dirty ||
+          customerForm.controls.Email.touched)
+      "
+      class="alert alert-danger mt-1"
+    >
+      <div *ngIf="customerForm.controls.Email.errors?.['required']">
+        Email is required.
+      </div>
+      <div *ngIf="customerForm.controls.Email.errors?.['email']">
+        Please enter a valid email address.
+      </div>
+      <div *ngIf="customerForm.controls.Email.errors?.['emailExists']">
+        Email already exists.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group mb-2">
+    <label class="mb-1">Bank Account Number:</label>
+    <input
+      type="text"
+      formControlName="BankAccountNumber"
+      class="form-control"
+    />
+    <div
+      *ngIf="
+        customerForm.controls.BankAccountNumber.invalid &&
+        (customerForm.controls.BankAccountNumber.dirty ||
+          customerForm.controls.BankAccountNumber.touched)
+      "
+      class="alert alert-danger mt-1"
+    >
+      <div *ngIf="customerForm.controls.BankAccountNumber.errors?.['required']">
+        Bank Account Number is required.
+      </div>
+      <div *ngIf="customerForm.controls.BankAccountNumber.errors?.['pattern']">
+        Bank Account Number must be a 10-digit number.
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary mt-3">Submit</button>
+  <p style="color: green" *ngIf="success">Customer successfuly added!</p>
+  <div class="mt-3 ml-2">
+    <button class="btn btn-secondary">
+      <a routerLink="/list">Go to List</a>
+    </button>
+  </div>
+</form>
+
