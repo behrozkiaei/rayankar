@@ -3,6 +3,7 @@ import { AbstractControl, AsyncValidatorFn, FormControl, FormGroup, ValidationEr
 import { customer } from '../../../domain/entity/crud.interface';
 import { FacadeService } from '../../../domain/application/facade.service';
 import { PhoneNumberUtil } from 'google-libphonenumber';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
@@ -32,7 +33,7 @@ export class AddComponent {
     ]),
   });
 
-  constructor(private facade: FacadeService) {}
+  constructor(private facade: FacadeService, private router: Router) {}
 
 
   onSubmit(): void {
@@ -93,6 +94,15 @@ export class AddComponent {
         }, 500);
       });
     };
+  }
+  getRouterLink() {
+    
+    let urlSegments = this.router.url.split('/');
+    // Remove the last route segment
+    urlSegments.pop();
+    // Append the new route
+    urlSegments.push('list');
+    return urlSegments.join('/');
   }
 }
 

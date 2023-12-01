@@ -27,6 +27,7 @@
 							"src/assets"
 						],
 						"styles": [
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
 							"src/styles.css"
 						],
 						"scripts": []
@@ -94,7 +95,8 @@
 							"src/assets"
 						],
 						"styles": [
-							"src/styles.css"
+							"src/styles.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css"
 						],
 						"scripts": []
 					}
@@ -129,7 +131,8 @@
 							"projects/shell/src/assets"
 						],
 						"styles": [
-							"projects/shell/src/styles.scss"
+							"projects/shell/src/styles.scss",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css"
 						],
 						"scripts": [],
 						"extraWebpackConfig": "projects/shell/webpack.config.js",
@@ -207,7 +210,8 @@
 							"projects/shell/src/assets"
 						],
 						"styles": [
-							"projects/shell/src/styles.scss"
+							"projects/shell/src/styles.scss",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css"
 						],
 						"scripts": []
 					}
@@ -242,7 +246,8 @@
 							"projects/home/src/assets"
 						],
 						"styles": [
-							"projects/home/src/styles.scss"
+							"projects/home/src/styles.scss",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css"
 						],
 						"scripts": [],
 						"extraWebpackConfig": "projects/home/webpack.config.js",
@@ -320,7 +325,8 @@
 							"projects/home/src/assets"
 						],
 						"styles": [
-							"projects/home/src/styles.scss"
+							"projects/home/src/styles.scss",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css"
 						],
 						"scripts": []
 					}

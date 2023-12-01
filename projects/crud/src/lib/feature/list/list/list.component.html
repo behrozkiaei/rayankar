@@ -1,1 +1,37 @@
-<p>list works!</p>
+<div  class="container col-md-6 col-sm-12 mt-5 " >
+
+    <div>
+        <button  class="btn btn-secondary "><a [routerLink]="getRouterLink()" >Add customer</a> </button>
+    </div>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Date of Birth</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Email</th>
+            <th scope="col">Bank Account Number</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of customerList">
+            <td>{{customer.id}}</td>
+            <td>{{customer.Firstname}}</td>
+            <td>{{customer.Lastname}}</td>
+            <td>{{customer.DateOfBirth}}</td>
+            <td>{{customer.PhoneNumber}}</td>
+            <td>{{customer.Email}}</td>
+            <td>{{customer.BankAccountNumber}}</td>
+            <td>
+              <button class="btn btn-primary btn-sm" (click)="editCustomer(customer.id!)">Edit</button>
+              <button class="btn btn-danger btn-sm" (click)="deleteCustomer(customer.id!)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+      
+</div>

@@ -29,7 +29,7 @@ module.exports = {
         library: { type: "module" },
         // For hosts (please adjust)
         remotes: {
-            // "crudTestAngularLatest": "http://localhost:4200/remoteEntry.js",
+            crudTestAngularLatest: "http://localhost:4200/remoteEntry.js",
             home: "http://localhost:3000/remoteEntry.js",
             crud: "http://localhost:3001/remoteEntry.js",
 

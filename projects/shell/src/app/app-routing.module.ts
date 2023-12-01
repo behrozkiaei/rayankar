@@ -10,11 +10,11 @@ const routes: Routes = [
     path: 'crud',
     loadChildren: () => import('crud/Module').then(m => m.AppModule) 
   } ,
-  { path: '', redirectTo: '/home', pathMatch: 'full' }, // redirect to `home`
+  { path: '', redirectTo: '/crud', pathMatch: 'full' }, // redirect to `home`
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
