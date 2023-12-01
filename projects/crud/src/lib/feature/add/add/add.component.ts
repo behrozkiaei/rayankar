@@ -8,7 +8,7 @@ import { PhoneNumberUtil } from 'google-libphonenumber';
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss']
 })
-export class AddComponent implements OnInit {
+export class AddComponent {
 
   public success = false;
   public customerForm = new FormGroup({
@@ -33,9 +33,7 @@ export class AddComponent implements OnInit {
   });
 
   constructor(private facade: FacadeService) {}
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+
 
   onSubmit(): void {
     if (this.success) {

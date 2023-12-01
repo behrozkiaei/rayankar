@@ -355,9 +355,13 @@
 							"projects/crud/src/assets"
 						],
 						"styles": [
-							"projects/crud/src/styles.scss"
+							"projects/crud/src/styles.scss",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css"
 						],
-						"scripts": [],
+						"scripts": [
+							"node_modules/jquery/dist/jquery.min.js",
+							"node_modules/bootstrap/dist/js/bootstrap.min.js"
+						],
 						"extraWebpackConfig": "projects/crud/webpack.config.js",
 						"commonChunk": false
 					},

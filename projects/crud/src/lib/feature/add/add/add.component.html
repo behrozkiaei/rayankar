@@ -1,6 +1,9 @@
+<div class="container-fluid">
+
+
 <form
   [formGroup]="customerForm"
-  class="container col-md-4 col-sm-12 mt-3"
+  class="col-md-4 col-sm-12 mt-5"
   (ngSubmit)="onSubmit()"
 >
   <div class="form-group mb-2">
@@ -8,13 +11,13 @@
     <input type="text" formControlName="Firstname" class="form-control" />
     <div
       *ngIf="
-        customerForm.controls.Firstname.invalid &&
-        (customerForm.controls.Firstname.dirty ||
-          customerForm.controls.Firstname.touched)
+        customerForm.controls['Firstname'].invalid &&
+        (customerForm.controls['Firstname'].dirty ||
+          customerForm.controls['Firstname'].touched)
       "
       class="alert alert-danger mt-1"
     >
-      <div *ngIf="customerForm.controls.Firstname.errors?.['required']">
+      <div *ngIf="customerForm.controls['Firstname'].errors?.['required']">
         First name is required.
       </div>
     </div>
@@ -25,13 +28,13 @@
     <input type="text" formControlName="Lastname" class="form-control" />
     <div
       *ngIf="
-        customerForm.controls.Lastname.invalid &&
-        (customerForm.controls.Lastname.dirty ||
-          customerForm.controls.Lastname.touched)
+        customerForm.controls['Lastname'].invalid &&
+        (customerForm.controls['Lastname'].dirty ||
+          customerForm.controls['Lastname'].touched)
       "
       class="alert alert-danger mt-1"
     >
-      <div *ngIf="customerForm.controls.Lastname.errors?.['required']">
+      <div *ngIf="customerForm.controls['Lastname'].errors?.['required']">
         Last Name is required.
       </div>
     </div>
@@ -42,16 +45,18 @@
     <input type="date" formControlName="DateOfBirth" class="form-control" />
     <div
       *ngIf="
-        customerForm.controls.DateOfBirth.invalid &&
-        (customerForm.controls.DateOfBirth.dirty ||
-          customerForm.controls.DateOfBirth.touched)
+        customerForm.controls['DateOfBirth'].invalid &&
+        (customerForm.controls['DateOfBirth'].dirty ||
+          customerForm.controls['DateOfBirth'].touched)
       "
       class="alert alert-danger mt-1"
     >
-      <div *ngIf="customerForm.controls.DateOfBirth.errors?.['required']">
+      <div *ngIf="customerForm.controls['DateOfBirth'].errors?.['required']">
         Date of Birth is required.
       </div>
-      <div *ngIf="customerForm.controls.DateOfBirth.errors?.['checkUserExist']">
+      <div
+        *ngIf="customerForm.controls['DateOfBirth'].errors?.['checkUserExist']"
+      >
         User Exist.
       </div>
     </div>
@@ -67,17 +72,17 @@
     />
     <div
       *ngIf="
-        customerForm.controls.PhoneNumber.invalid &&
-        (customerForm.controls.PhoneNumber.dirty ||
-          customerForm.controls.PhoneNumber.touched)
+        customerForm.controls['PhoneNumber'].invalid &&
+        (customerForm.controls['PhoneNumber'].dirty ||
+          customerForm.controls['PhoneNumber'].touched)
       "
       class="alert alert-danger mt-1"
     >
-      <div *ngIf="customerForm.controls.PhoneNumber.errors?.['required']">
+      <div *ngIf="customerForm.controls['PhoneNumber'].errors?.['required']">
         Phone Number is required.
       </div>
       <div
-        *ngIf="customerForm.controls.PhoneNumber.errors?.['invalidPhoneNumber']"
+        *ngIf="customerForm.controls['PhoneNumber'].errors?.['invalidPhoneNumber']"
       >
         Invalid phone number.
       </div>
@@ -89,19 +94,19 @@
     <input type="email" formControlName="Email" class="form-control" />
     <div
       *ngIf="
-        customerForm.controls.Email.invalid &&
-        (customerForm.controls.Email.dirty ||
-          customerForm.controls.Email.touched)
+        customerForm.controls['Email'].invalid &&
+        (customerForm.controls['Email'].dirty ||
+          customerForm.controls['Email'].touched)
       "
       class="alert alert-danger mt-1"
     >
-      <div *ngIf="customerForm.controls.Email.errors?.['required']">
+      <div *ngIf="customerForm.controls['Email'].errors?.['required']">
         Email is required.
       </div>
-      <div *ngIf="customerForm.controls.Email.errors?.['email']">
+      <div *ngIf="customerForm.controls['Email'].errors?.['email']">
         Please enter a valid email address.
       </div>
-      <div *ngIf="customerForm.controls.Email.errors?.['emailExists']">
+      <div *ngIf="customerForm.controls['Email'].errors?.['emailExists']">
         Email already exists.
       </div>
     </div>
@@ -116,16 +121,20 @@
     />
     <div
       *ngIf="
-        customerForm.controls.BankAccountNumber.invalid &&
-        (customerForm.controls.BankAccountNumber.dirty ||
-          customerForm.controls.BankAccountNumber.touched)
+        customerForm.controls['BankAccountNumber'].invalid &&
+        (customerForm.controls['BankAccountNumber'].dirty ||
+          customerForm.controls['BankAccountNumber'].touched)
       "
       class="alert alert-danger mt-1"
     >
-      <div *ngIf="customerForm.controls.BankAccountNumber.errors?.['required']">
+      <div
+        *ngIf="customerForm.controls['BankAccountNumber'].errors?.['required']"
+      >
         Bank Account Number is required.
       </div>
-      <div *ngIf="customerForm.controls.BankAccountNumber.errors?.['pattern']">
+      <div
+        *ngIf="customerForm.controls['BankAccountNumber'].errors?.['pattern']"
+      >
         Bank Account Number must be a 10-digit number.
       </div>
     </div>
@@ -139,4 +148,4 @@
     </button>
   </div>
 </form>
-
+</div>
