@@ -37,3 +37,33 @@ Customer {
 ### Delivery (Must)
 - Please clone this repository in a new GitHub repository in private mode and share with ID: `mason-chase` in private mode on github.com, make sure you do not erase my commits and then create a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) (code review).
 
+
+### My Senario 
+Feature: Customer Form Validation
+  As a user
+  I want to be able to add a new customer
+  So that I can manage my customer database
+
+  Background:
+    Given I am on the "Add Customer" page
+    And I see an empty customer form
+
+  Scenario: Validate phone number
+    When I enter a "PhoneNumber" that is not a valid mobile number
+    Then I should see an error message under the "PhoneNumber" field
+
+  Scenario: Validate email and account number
+    When I enter an "Email" that is not a valid email address
+    Or I enter a "BankAccountNumber" that is not a valid account number
+    Then I should see an error message under the invalid field
+
+  Scenario: Check uniqueness of customer
+    Given I have a customer "John Doe" with "DateOfBirth" as "2000-01-01" in my database
+    When I enter "Firstname" as "John", "Lastname" as "Doe", and "DateOfBirth" as "2000-01-01"
+    Then I should see an error message indicating that the customer already exists
+
+  Scenario: Check uniqueness of email
+    Given I have a customer with "Email" as "john.doe@example.com" in my database
+    When I enter "Email" as "john.doe@example.com"
+    Then I should see an error message indicating that the email already exists
+
