@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListComponent } from './list/list.component';
+import { FacadeService } from '../../domain/application/facade.service';
 const routes: Routes = [
   { path: '', component: ListComponent }
 ];
@@ -14,6 +15,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-  ]
+  ],
+  providers :[FacadeService]
 })
 export class ListModule { }

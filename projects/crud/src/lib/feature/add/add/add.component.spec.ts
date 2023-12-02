@@ -1,9 +1,15 @@
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 
+import {
+  ComponentFixture,
+  TestBed,
+  fakeAsync,
+  tick,
+} from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddComponent } from './add.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { FacadeService } from '../../../domain/application/facade.service';
 import { By } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AddComponent', () => {
   let component: AddComponent;
@@ -19,7 +25,7 @@ describe('AddComponent', () => {
         .and.returnValue(Promise.resolve(true)),
     };
     await TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule],
+      imports: [ReactiveFormsModule,RouterTestingModule],
       declarations: [AddComponent],
       providers: [{ provide: FacadeService, useValue: facade }], // replace YourFacadeService with the actual name of your facade service
     }).compileComponents();

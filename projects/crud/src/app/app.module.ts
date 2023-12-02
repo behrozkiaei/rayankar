@@ -18,7 +18,8 @@ import { DomainModule } from '../lib/domain/domain.module';
   ],
   imports: [
     BrowserModule,
-    environment.production ? AppRoutingProdModule : AppRoutingModule,
+    // environment.production ? AppRoutingProdModule : AppRoutingModule,
+    AppRoutingModule,
     ReactiveFormsModule,
     CommonModule , 
     DomainModule,

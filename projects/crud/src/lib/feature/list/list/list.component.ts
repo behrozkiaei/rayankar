@@ -14,8 +14,7 @@ export class ListComponent implements OnInit {
   constructor(private facade : FacadeService ,private router: Router) { }
   customerList:customer[]=[]
   ngOnInit(): void {
-    console.log("in list component")
-    this.customerList = this.facade.getAll();
+   
     this.facade.list.subscribe(res=>{
       console.log("subscribatino" , res)
       this.customerList =res
