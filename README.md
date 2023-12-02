@@ -67,3 +67,47 @@ Feature: Customer Form Validation
     When I enter "Email" as "john.doe@example.com"
     Then I should see an error message indicating that the email already exists
 
+# Project run
+
+This project is an application that consists of two Micro Frontends (MFEs) and one host, built using the Angular Module Federation architecture. 
+
+## Micro Frontends
+
+```bash
+npm i
+```
+
+- **MFE1** is 'home', which is an empty component that can be served on port 3000. To serve this component, use the following command:
+
+```bash
+ng s home
+```
+
+- **MFE2** is 'crud', which is an application part where CRUD (Create, Read, Update, Delete) functionality takes place. 
+
+To serve it on a single port for development purposes, use the following command:
+
+```bash
+ng serve crud
+```
+
+For unit test analysis, use the following command:
+
+```bash
+ng test crud
+```
+
+However, if you want to establish it in the shell host, you should use the following command:
+
+```bash
+ng s crud --configuration prod
+```
+
+## Shell
+
+To run the shell, use the following command:
+
+```bash
+ng serve shell
+```
+
