@@ -6,9 +6,7 @@ export const routes: Routes = [
   {
     path: 'add',
     loadChildren: () =>
-      import('../lib/feature/add/add.module').then(
-        (m) => m.AddModule
-      ),
+      import('../lib/feature/add/add.module').then((m) => m.AddModule),
   },
   {
     path: 'list',
@@ -16,13 +14,18 @@ export const routes: Routes = [
       import('../lib/feature/list/list.module').then((m) => m.ListModule),
   },
   {
+    path: 'edit/:id',
+    loadChildren: () =>
+      import('../lib/feature/add/add.module').then((m) => m.AddModule),
+  },
+  {
     path: 'view',
-    component : ViewComponent,
+    component: ViewComponent,
   },
   { path: '', redirectTo: '/add', pathMatch: 'full' }, // redirect to `list`
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

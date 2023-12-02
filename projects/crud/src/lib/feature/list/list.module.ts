@@ -16,6 +16,6 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
   ],
-  providers :[FacadeService]
+  // providers :[FacadeService]
 })
 export class ListModule { }

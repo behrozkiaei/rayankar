@@ -18,14 +18,14 @@ import { DomainModule } from '../lib/domain/domain.module';
   ],
   imports: [
     BrowserModule,
-    // environment.production ? AppRoutingProdModule : AppRoutingModule,
-    AppRoutingModule,
+    environment.production ? AppRoutingProdModule : AppRoutingModule,
+    // AppRoutingModule,
     ReactiveFormsModule,
     CommonModule , 
     DomainModule,
     AddModule,
     ViewModule,
-    ListModule,
+    ListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

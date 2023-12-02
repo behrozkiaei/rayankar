@@ -16,10 +16,8 @@ export class CrudService {
   loadData() {
     const storedCustomerList = localStorage.getItem('customerList');
     if (storedCustomerList) {
-      console.log(storedCustomerList , "in infrustucture")
       this.customerList = JSON.parse(storedCustomerList);
     }
-    console.log(this.customerList)
   }
 
   //List data 
@@ -43,28 +41,31 @@ export class CrudService {
 
 
   //Find data by id
-  findDataById(id: string): customer | boolean {
+  findDataById(id: string): customer | null {
+    console.log(this.customerList)
     const customer = this.customerList.find(customer => customer.id === id);
     if (customer) {
       return customer;
     } else {
-      return false;
+      return null;
     }
   }
 
   //Edit data
   editData(id: string, updatedCustomer: customer): boolean {
     try {
+      this.loadData();
       const index = this.customerList.findIndex(customer => customer.id === id);
       if (index !== -1) {
-        this.customerList[index] = updatedCustomer;
-        this.updateStorage();
+        const newarr : customer = { ...updatedCustomer ,id  };
+        this.customerList[index] = newarr;
+        this.updateStorage()
         return true;
       } else {
         return false;
       }
     } catch (error) {
-      console.error(error);
+      console.log(error);
       return false;
     }
   }
@@ -90,6 +91,7 @@ export class CrudService {
 
   // Update the customer list in localStorage
   updateStorage() {
+    // localStorage.removeItem('customerList');
     localStorage.setItem('customerList', JSON.stringify(this.customerList));
     this.loadData();
   }
