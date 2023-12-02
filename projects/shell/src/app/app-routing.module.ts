@@ -3,13 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('home/Module').then(m => m.AppModule) 
-  },
-  {
     path: 'crud',
     loadChildren: () => import('crud/Module').then(m => m.AppModule) 
   } ,
+  {
+    path: 'home',
+    loadChildren: () => import('home/Module').then(m => m.AppModule) 
+  },
   { path: '', redirectTo: '/crud', pathMatch: 'full' }, // redirect to `home`
 ];
 

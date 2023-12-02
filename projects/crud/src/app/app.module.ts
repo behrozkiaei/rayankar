@@ -3,9 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { environment } from '../environments/environment';
 import { AddModule } from '../lib/feature/add/add.module';
 import { ListModule } from '../lib/feature/list/list.module';
 import { ViewModule } from '../lib/feature/view/view.module';
+import { AppRoutingProdModule } from './app-routing-prod.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -15,8 +17,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    AppRoutingModule,
+    environment.production ? AppRoutingProdModule : AppRoutingModule,
     ReactiveFormsModule,
     CommonModule , 
     AddModule,
