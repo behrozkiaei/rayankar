@@ -1,8 +1,8 @@
-import { PlatformLocation } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { FacadeService } from '../../../domain/application/facade.service';
 import { customer } from '../../../domain/entity/crud.interface';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-list',
@@ -10,29 +10,22 @@ import { customer } from '../../../domain/entity/crud.interface';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-
-  constructor(private facade : FacadeService ,private router: Router,private location: PlatformLocation ) {
-    this.location.onPopState(() => {
-      this.customerList = this.facade.getAll()
-    });
-   }
+  isProduction = environment.production
+  constructor(private facade : FacadeService ,private router: Router) { }
   customerList:customer[]=[]
   ngOnInit(): void {
-    this.customerList = this.facade.getAll()
-    
+    console.log("in list component")
+    this.customerList = this.facade.getAll();
+    this.facade.list.subscribe(res=>{
+      console.log("subscribatino" , res)
+      this.customerList =res
+    })
   }
   editCustomer(id:string){
-    console.log(id)
+    this.facade.delete(id)
   }
   deleteCustomer(id:string){
-    console.log(id)
+    this.facade.delete(id)
   }
-  getRouterLink() {
-    let urlSegments = this.router.url.split('/');
-    // Remove the last route segment
-    urlSegments.pop();
-    // Append the new route
-    urlSegments.push('add');
-    return urlSegments.join('/');
-  }
+
 }

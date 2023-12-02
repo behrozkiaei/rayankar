@@ -16,8 +16,10 @@ export class CrudService {
   loadData() {
     const storedCustomerList = localStorage.getItem('customerList');
     if (storedCustomerList) {
+      console.log(storedCustomerList , "in infrustucture")
       this.customerList = JSON.parse(storedCustomerList);
     }
+    console.log(this.customerList)
   }
 
   //List data 
@@ -89,5 +91,6 @@ export class CrudService {
   // Update the customer list in localStorage
   updateStorage() {
     localStorage.setItem('customerList', JSON.stringify(this.customerList));
+    this.loadData();
   }
 }

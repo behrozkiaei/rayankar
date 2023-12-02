@@ -6,7 +6,8 @@ class="container col-md-4 col-sm-12 mt-5"
 >
     <div class="mb-3">
       <button class="btn btn-secondary">
-        <a [routerLink]="getRouterLink()" >Go to List</a>
+        <a *ngIf="isProduction" routerLink="/crud/list">Go to List</a>
+        <a *ngIf="!isProduction" routerLink="/list">Go to List</a>
       </button>
     </div>
     <div class="form-group mb-2">

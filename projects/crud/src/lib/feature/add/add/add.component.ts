@@ -4,6 +4,7 @@ import { customer } from '../../../domain/entity/crud.interface';
 import { FacadeService } from '../../../domain/application/facade.service';
 import { PhoneNumberUtil } from 'google-libphonenumber';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 export class AddComponent {
 
   public success = false;
+  isProduction = environment.production;
   public customerForm = new FormGroup({
     Firstname: new FormControl('', [Validators.required]),
     Lastname: new FormControl('', [Validators.required]),
@@ -55,7 +57,7 @@ export class AddComponent {
       };
       console.log(payload);
 
-      const result = this.facade.add(payload);
+      const result = this.facade.addData(payload);
       if (result) {
         this.success = true;
         this.customerForm.disable;

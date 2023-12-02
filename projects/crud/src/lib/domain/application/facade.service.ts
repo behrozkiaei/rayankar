@@ -1,20 +1,26 @@
 import { Injectable } from '@angular/core';
 import { CrudService } from '../infrustructure/crud.service';
 import { customer } from '../entity/crud.interface';
+import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class FacadeService {
-  constructor(private infrustructure: CrudService) {}
-
+  private dataSource = new BehaviorSubject<customer[]>([]);
+  public list = this.dataSource.asObservable();
+  constructor(private infrustructure: CrudService) {
+    this.dataSource.next(this.infrustructure.listData())
+  }
   // get all
   getAll(): customer[] {
     return this.infrustructure.listData();
   }
 
   //add
-  add(customer: customer): boolean {
-    return this.infrustructure.addData(customer);
+  addData(customer: customer): boolean {
+    const res =  this.infrustructure.addData(customer);
+    this.updateObservable()
+    return res;
   }
 
   //edit
@@ -24,7 +30,9 @@ export class FacadeService {
 
   //delete
   delete(id: string): boolean {
-    return this.infrustructure.deleteData(id);
+    const res =  this.infrustructure.deleteData(id);
+    this.updateObservable()
+    return res
   }
 
   //get by id
@@ -53,6 +61,10 @@ export class FacadeService {
     return this.infrustructure
       .listData()
       .some((customer) => customer.Firstname === firstname && customer.Lastname === lastname && customer.DateOfBirth === dateOfBirth);
+  }
+  updateObservable(){
+    const data = this.infrustructure.listData()
+    this.dataSource.next(data)
   }
 
 }

@@ -10,6 +10,7 @@ import { ViewModule } from '../lib/feature/view/view.module';
 import { AppRoutingProdModule } from './app-routing-prod.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DomainModule } from '../lib/domain/domain.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AppComponent } from './app.component';
     environment.production ? AppRoutingProdModule : AppRoutingModule,
     ReactiveFormsModule,
     CommonModule , 
+    DomainModule,
     AddModule,
     ViewModule,
     ListModule,

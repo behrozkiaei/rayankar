@@ -1,7 +1,10 @@
 <div  class="container col-md-6 col-sm-12 mt-5 " >
 
     <div>
-        <button  class="btn btn-secondary "><a [routerLink]="getRouterLink()" >Add customer</a> </button>
+        <button  class="btn btn-secondary ">
+          <a *ngIf="isProduction" routerLink="/crud/add">Go to add</a>
+          <a *ngIf="!isProduction" routerLink="/add">Go to add</a>
+        </button>
     </div>
     <table class="table table-striped">
         <thead>
@@ -17,7 +20,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let customer of customerList">
+          <tr *ngFor="let customer of customerList ">
             <td>{{customer.id}}</td>
             <td>{{customer.Firstname}}</td>
             <td>{{customer.Lastname}}</td>
